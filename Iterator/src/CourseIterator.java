@@ -4,14 +4,15 @@ import java.util.ArrayList;
 public class CourseIterator implements Iterator
 {
 	
-	private ArrayList<Student> roster;
+	private ArrayList roster;
 	private int cur = 0;
 	
-	public CourseIterator(ArrayList<Student> roster)
+	public CourseIterator(Object roster2)
 	{
-		this.roster = roster;
+		this.roster = (ArrayList) roster2;
 	}
 	
+
 	@Override
 	public boolean hasNext()
 	{
@@ -24,7 +25,7 @@ public class CourseIterator implements Iterator
 	@Override
 	public Object next()
 	{
-		Student student = roster.get(cur);
+		Student student = (Student) roster.get(cur);
 		cur++;
 		return student;
 	}

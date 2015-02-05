@@ -1,17 +1,17 @@
-import java.util.ArrayList;
+
 import java.util.Iterator;
 
 public class Course implements Iterable
 {
 	private String courseName;
 	private int courseNumber;
-	private ArrayList<Student> roster;
+	private ArrayList roster;
 	
 	public Course(String courseName, int courseNumber)
 	{
 		this.courseName = courseName;
 		this.courseNumber = courseNumber;
-		this.roster = new ArrayList<Student>();
+		this.roster = new ArrayList();
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class Course implements Iterable
 		this.roster.add(student);
 	}
 	
-	public ArrayList<Student> getRoster()
+	public ArrayList getRoster()
 	{
 		return this.roster;
 	}
