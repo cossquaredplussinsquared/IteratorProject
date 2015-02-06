@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class Tester
 {
 
@@ -19,7 +17,7 @@ public class Tester
 	
 	public static void printRoster(Course course)
 	{
-		for(Student s : course.getRoster())
+		for(Student s : course)
 		{
 			System.out.println(s);
 		}
