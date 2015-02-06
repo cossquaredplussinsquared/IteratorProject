@@ -1,34 +1,44 @@
 
 import java.util.Iterator;
 
-public class Course implements Iterable
+public class Course implements Iterable<Student>
 {
 	private String courseName;
 	private int courseNumber;
-	private ArrayList roster;
+	private Student[] roster;
+	private int rosterSize;
 	
 	public Course(String courseName, int courseNumber)
 	{
 		this.courseName = courseName;
 		this.courseNumber = courseNumber;
-		this.roster = new ArrayList();
+		this.roster = new Student[10];
+		this.rosterSize = 0;
 	}
 
 	@Override
-	public Iterator iterator()
+	public Iterator<Student> iterator()
 	{
-		return new CourseIterator(roster);
+		return new CourseIterator<Student>(roster, rosterSize);
 	}
 	
 	public void addStudent(String name, double gpa, int idNumber)
 	{
 		Student student = new Student(name, gpa, idNumber);
-		this.roster.add(student);
+		rosterSize++;
+		if(rosterSize == roster.length)
+			rosterSizeIncrease();
+		else
+			this.roster[rosterSize - 1] = student;
 	}
 	
-	public ArrayList getRoster()
-	{
-		return this.roster;
+	private void rosterSizeIncrease() {
+		Student[] newRoster = new Student[roster.length * 2];
+		for(int i = 0; i < roster.length; i++){
+			newRoster[i] = roster[i];
+		}
+		roster = newRoster;
+		
 	}
 	
 	public String toString()

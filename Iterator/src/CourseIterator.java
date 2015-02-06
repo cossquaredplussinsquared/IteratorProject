@@ -1,31 +1,33 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 
-public class CourseIterator implements Iterator
+public class CourseIterator<Type> implements Iterator<Type>
 {
 	
-	private ArrayList roster;
-	private int cur = 0;
+	private Type[] roster;
+	private int cur = 0, size = 0;
 	
-	public CourseIterator(Object roster2)
+	
+	public CourseIterator(Type[] roster2, int rosterSize)
 	{
-		this.roster = (ArrayList) roster2;
+		this.roster = roster2;
+		size = rosterSize;
 	}
 	
 
 	@Override
 	public boolean hasNext()
 	{
-		if(cur >= roster.size())
+		if(cur >= size)
 			return false;
 		else
 			return true;
 	}
 
 	@Override
-	public Object next()
+	public Type next()
 	{
-		Student student = (Student) roster.get(cur);
+		Type student = roster[cur];
 		cur++;
 		return student;
 	}
